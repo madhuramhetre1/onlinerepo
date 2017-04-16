@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+<context:annotation-config />
+	<context:component-scan base-package="com.shopping"></context:component-scan>
+	<mvc:annotation-driven />
+	<!-- add view resolver bean -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/WEB-INF/views/" p:suffix=".jsp"
+		p:viewClass="org.springframework.web.servlet.view.JstlView" />
+		
+<!-- 	<bean id="UserDao" 
+	      class="com.shopping.dao.UserDaoImpl"
+		  p:sessionFactory-ref="hibernate4AnnotatedSessionFactory" />
+		  
+	<bean id="UserService" 
+	      class="com.shopping.service.UserServiceImpl"
+		  p:UserDao-ref="UserDao" /> -->
+		
+	<import resource="classpath:/hibernate-persistence.xml" />
+
+</beans>		
